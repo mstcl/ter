@@ -6,15 +6,18 @@ interface FooterProps {
 
 const Footer = ({ author }: FooterProps) => {
   let items = [
-    ["Feed", "/feed.xml"],
-    ["Made with Ter", "https://ter.kkga.me"],
+    ["about", "https://meta.lonely-desk.top/about"],
+    ["contact", "mailto://atiredprole@lonely-desk.top"],
+    ["feed", "/feed.xml"],
+    ["permacomputing", "https://permacomputing.net"],
+    ["smolweb", "https://smolweb.org"],
   ];
 
-  if (author) items = [[author.name, author.url], ...items];
-
   return (
-    <footer class="mt-auto flex items-baseline text(xs neutral-10)">
-      <ul class="divide-dot flex items-baseline">
+    <footer>
+      <hr></hr>
+      <ul style="display: flex; align-items: baseline; list-style: none;
+      margin: 0px; padding: 0px">
         {items.map(([label, path]) => (
           <li>
             <a href={path}>{label}</a>

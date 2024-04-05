@@ -51,25 +51,14 @@ const Body = ({
   author,
   lang,
 }: BodyProps) => (
-  <body
-    class="
-        antialiased
-        min-h-screen
-        mx-auto max-w-3xl
-        p-4
-        flex flex-col gap-16
-        text(neutral-12)
-        tracking-[-0.015em]
-        bg(neutral-1) 
-      "
-  >
+  <body>
     <Header crumbs={crumbs} />
 
-    <main class="[&:has(article:empty)]:hidden">
+    <main>
       <Article lang={lang} page={page} />
     </main>
 
-    <aside class="empty:hidden flex flex-col gap-12">
+    <aside style="flex-direction: column; gap: 3rem; display: flex">
       {childPages && childPages.length > 0 && (
         <PageIndex lang={lang} layout={page.layout} pages={childPages} />
       )}

@@ -12,19 +12,25 @@ const IndexGrid = ({ items }: IndexGridProps) => {
     <section>
       <h6 class="section-heading">Pages</h6>
       {Array.isArray(items) ? (
-        <ul class="-mx-2 grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+        <ul class="index-grid">
           {items.map((item) => (
-            <a href={item.url.pathname} class="box p-2 flex flex-col gap-1">
+            <a href={item.url.pathname} style="
+              gap: 0.25rem;
+              padding: 0.5rem;
+              display: flex;
+              flex-direction: column;
+            "
+            class="box">
               {item.thumbnailUrl && (
                 <img
                   class="mb-2 w-full object-cover aspect-[4/3]"
                   src={item.thumbnailUrl.toString()}
                 />
               )}
-              <span class="block leading-tight font-medium">{item.title}</span>
+              <span style="font-weight:500; display: block">{item.title}</span>
 
               {item.description && (
-                <span class="leading-tight text-sm text-neutral-9 hyphens-auto">
+                <span style="font-size: 0.875rem; color: var(--sub)">
                   {item.description}
                 </span>
               )}

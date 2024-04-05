@@ -11,25 +11,38 @@ interface PageItemProps {
 
 const PageItem = ({ title, description, url, isDirIndex }: PageItemProps) => {
   return (
-    <li class="max-w-full">
+    <li style="max-width: 100%">
       <a
         href={url.pathname}
-        class="
-          box
-          px-2 py-1
-          flex flex-row items-baseline gap-1.5
-          ring-offset-4 ring-offset-neutral-3
-          leading-tight
+        style="
+          color: var(--foreground);
+          align-items: baseline;
+          gap: 0.375rem;
+          display: flex;
+          flex-direction: row;
+          padding: 0.25rem 0.5rem;
         "
+        class="box"
       >
-        <div class="flex-1 flex items-baseline overflow-hidden whitespace-nowrap">
-          <span class="flex-shrink-0 font-medium truncate">
+        <div
+          style="
+            white-space: nowrap;
+            align-items: baseline;
+            overflow: hidden;
+            flex: 1 1 0%;
+            display: flex;"
+          >
+          <span style="font-weight: 500; flex-shrink: 0" class="truncate">
             {title}
             {isDirIndex && " / .."}
           </span>
           {description && (
-            <span class="truncate text-neutral-10">
-              <span class="text-neutral-8 mx-2">&mdash;</span>
+            <span style="color: var(--sub);"
+              class="truncate">
+              <span style="
+              margin-left: 0.5rem;
+              margin-right: 0.5rem;
+              ">&mdash;</span>
               {description}
             </span>
           )}
@@ -46,9 +59,12 @@ interface TagItemProps {
 
 const TagItem = ({ name, pageCount }: TagItemProps) => {
   return (
-    <li class="max-w-full">
-      <a href={`/tags##${name}`} class="box px-2 py-1 leading-tight">
-        {name} <span class="text-neutral-9">{pageCount}</span>
+    <li style="max-width: 100%">
+      <a href={`/tags##${name}`} class="box" style="
+          padding: 0.25rem 0.5rem;
+          color: var(--foreground)
+      ">
+        {name} <span style="color: var(--sub)">{pageCount}</span>
       </a>
     </li>
   );
@@ -63,10 +79,21 @@ interface IndexListProps {
 
 const IndexList = ({ items, title, type }: IndexListProps) => {
   return (
-    <section id={title} class="target:([&>h6]:(text-accent-10))">
+    <section id={title}>
       <h6 class="section-heading">{title}</h6>
       {(type === "pages" || type === "backlinks") && Array.isArray(items) && (
-        <ul class="-mx-2 flex flex-col items-start">
+        <ul style="
+          align-items: flex-start;
+          flex-direction: column;
+          margin: 0px;
+          padding: 0px;
+          margin-left: calc(0.5rem * -1);
+          margin-right: calc(0.5rem * -1);
+          display: flex;
+          list-style: none;
+          line-height: 1.5;
+        "
+        >
           {items.map((item) => (
             <PageItem
               isDirIndex={item.index === "dir"}
@@ -78,7 +105,14 @@ const IndexList = ({ items, title, type }: IndexListProps) => {
         </ul>
       )}
       {type === "tags" && (
-        <ul class="-mx-2 flex flex-wrap">
+        <ul style="
+          display: flex;
+          margin: 0px;
+          padding: 0px;
+          margin-left: calc(0.5rem * -1);
+          margin-right: calc(0.5rem * -1);
+          flex-wrap: wrap;
+          list-style: none;">
           {Object.entries(items).map((item) => (
             <TagItem name={item[0]} pageCount={item[1].length} />
           ))}

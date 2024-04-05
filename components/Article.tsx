@@ -1,15 +1,14 @@
 /** @jsxImportSource npm:preact */
 
-import { cx } from "../deps/twind.ts";
 import { Heading, Page } from "../types.d.ts";
 
 const Toc = ({ headings }: { headings: Heading[] }) => (
-  <ol class="hidden sm:block lg:-mr-12 float-right w-1/3 lg:w-2/5 px-3 py-2 ml-4 my-0 rounded text(sm neutral-11) font-medium list(inside) not-prose list-none">
-    <span class="block text-xs text-neutral-10 mb-2">Contents</span>
+  <ol class="toc">
+    <span style="display: block; font-size; 0.875rem; color: var(--foreground)">Contents</span>
     {headings.map((h: Heading) => {
       return (
         <li class="truncate">
-          <a href={`#${h.slug}`}>{h.text}</a>
+          <a style="font-size: .9rem; text-decoration: none; color: var(--sub)" href={`#${h.slug}`}>{h.text}</a>
         </li>
       );
     })}
@@ -23,9 +22,9 @@ const Metadata = ({
   label?: string;
   children: preact.ComponentChildren;
 }) => (
-  <div class={cx("flex flex-row text-neutral-9")}>
+  <div>
     {label && <span>{label}&nbsp;</span>}
-    <div>{children}</div>
+    {children}
   </div>
 );
 
@@ -57,17 +56,13 @@ const Header = ({
   };
 
   return (
-    <header
-      class={cx("flex flex-col gap-2 empty:hidden only-child:(m-0)", {
-        "gap-2 mb-12": !compact,
-      })}
-    >
-      <h1 class={cx("tracking-tight my-0", { "text-xl": compact })}>{title}</h1>
+    <header>
+      <h1 style="margin-top: 0px; margin-bottom: 0px;">{title}</h1>
 
       {description && <p class="lead">{description}</p>}
 
       {(datePublished || dateUpdated || tags) && (
-        <div class="divide-dot not-prose flex items-baseline text(sm neutral-10)">
+        <div class="metadata" style="align-items: baseline; font-size: 0.875rem; display: flex">
           {datePublished && (
             <Metadata>
               <a href={url.toString()}>
@@ -86,9 +81,9 @@ const Header = ({
           )}
           {tags && (
             <Metadata>
-              <ul class="m-0 p-0 space-x-2">
+              <ul style="padding: 0px; margin: 0px; list-style: none">
                 {tags.map((tag) => (
-                  <li class="p-0 m-0 inline">
+                  <li style="padding: 0px; margin: 0px; display: inline">
                     <a href={`/tags##${tag}`}>#{tag}</a>
                   </li>
                 ))}
