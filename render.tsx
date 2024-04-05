@@ -507,16 +507,16 @@ export function renderPage({
       background-color:transparent;
       border-radius:0.25rem;
     }
-    .box:is(a):hover {
-      --tw-text-opacity: 1;
+    .box:is(a):visited {
       color: var(--foreground);
     }
     .box:is(a):hover {
-      --tw-bg-opacity: 1;
+      color: var(--foreground);
+    }
+    .box:is(a):hover {
       background-color: var(--subtle);
     }
     .box:is(a) {
-      --tw-text-opacity: 1;
       color: var(--foreground);
     }
     .h-anchor {

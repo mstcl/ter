@@ -118,7 +118,7 @@ const Article = ({ page, children, lang, compact }: ArticleProps) => {
   } = page;
 
   return (
-    <article class="prose prose-neutral max-w-none">
+    <article>
       {showHeader && (
         <Header
           url={url}

@@ -6,6 +6,7 @@ interface FooterProps {
 
 const Footer = ({ author }: FooterProps) => {
   let items = [
+    ["cc by-nd 4.0", "https://creativecommons.org/licenses/by-nd/4.0/"],
     ["about", "https://meta.lonely-desk.top/about"],
     ["contact", "mailto://atiredprole@lonely-desk.top"],
     ["feed", "/feed.xml"],
@@ -17,7 +18,7 @@ const Footer = ({ author }: FooterProps) => {
     <footer>
       <hr></hr>
       <ul style="display: flex; align-items: baseline; list-style: none;
-      margin: 0px; padding: 0px">
+      margin: 0px; padding: 0px;flex-direction: row; flex-wrap: wrap;">
         {items.map(([label, path]) => (
           <li>
             <a href={path}>{label}</a>
