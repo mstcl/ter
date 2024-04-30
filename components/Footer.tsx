@@ -8,7 +8,8 @@ const Footer = ({ author }: FooterProps) => {
   let items = [
     ["cc by-nd 4.0", "https://creativecommons.org/licenses/by-nd/4.0/"],
     ["about", "https://meta.lonely-desk.top/about"],
-    ["contact", "mailto://atiredprole@lonely-desk.top"],
+    ["contact", "mailto:atiredprole@lonely-desk.top"],
+    ["source", "https://src.lonely-desk.top"],
     ["feed", "/feed.xml"],
     ["permacomputing", "https://permacomputing.net"],
     ["smolweb", "https://smolweb.org"],
